@@ -1,32 +1,37 @@
 package gambler;
 
+import java.util.Scanner;
+
 public class GamblerUc2 {
-	
-	//Constant
-    public final int STAKE=100;
-    public final int BET_FOREACHGAME=1;
-    
-    //variables
-    static int bet=1;
-    
-    static void WinOrLoose() {
-     	 double check=(int)(Math.random() *10)%2; 
-     	if(check == 1 )
-        {
-       	 bet++;
-           System.out.println("Gamler is winning "+bet); 	
-        }
-        else
-        {
-          bet--;
-        	System.out.println("Gambler is loosing  "+bet);
-         }
-      }
-   
-    
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		WinOrLoose();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter the stake amount: ");
+		int StakePerDay = scanner.nextInt();
+		System.out.println("Enter the bet price per game: ");
+		int BetPrice = scanner.nextInt();
+
+		System.out.println("Stake per days is $" + StakePerDay);
+		System.out.println("Bet price per game is $" + BetPrice);
+		
+		//UC1 Gamble $1 bet so eaither win or loose
+		int play = (int) (Math.random() * 2);
+		switch (play) 
+		{
+		case 0:
+			StakePerDay += BetPrice;
+			System.out.println("The player has won $1");
+			System.out.println("The stake after winning is $" + StakePerDay);
+			break;
+
+		case 1:
+			StakePerDay -= BetPrice;
+			System.out.println("The player has lost $1");
+			System.out.println("The stake after lossing is $" + StakePerDay);
+			break;
+		}
+		
+
 	}
 
 }
